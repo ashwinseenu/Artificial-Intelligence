@@ -1,0 +1,33 @@
+# ─────────────────────────────────────────────────────────────
+#  .wslconfig  — WSL2 memory & swap settings for 7b LLM
+#
+#  LOCATION: Save this file as:
+#    C:\Users\<YourUsername>\.wslconfig
+#  (Note the dot prefix — it IS part of the filename)
+#
+#  After saving, run in PowerShell (Admin):
+#    wsl --shutdown
+#  Then reopen Docker Desktop.
+# ─────────────────────────────────────────────────────────────
+
+[wsl2]
+
+# Physical RAM given to WSL2.
+# Rule: set to 75% of your total physical RAM.
+# Examples:
+#   8  GB total  → memory=6GB
+#   16 GB total  → memory=12GB
+#   32 GB total  → memory=24GB
+memory=12GB
+
+# Virtual swap size (the "virtual RAM" for the 7b model).
+# Set to AT LEAST 16GB so the 7b model (~8GB) fits even if RAM is tight.
+# This is disk-backed — make sure you have the free disk space.
+swap=20GB
+
+# Processors (optional — remove line to use all cores)
+processors=4
+
+# Enables memory to be reclaimed by Windows when WSL2 is idle
+[experimental]
+autoMemoryReclaim=gradual
